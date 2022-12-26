@@ -1,0 +1,86 @@
+<div class="text-layout">
+  <h1>Pipes No communes</h1>
+  <p>Pipes no communes en angular - Usualmente no comunes</p>
+</div>
+
+<div class="grid">
+
+  <div class="col col-12 md:col-6 sm:col-3">
+    <p-fieldset [toggleable]="true">
+      <ng-template pTemplate="header">i18Select pipe</ng-template>
+      Saludos {{nombre}}, es un placer 
+      {{genero | i18nSelect:invitacionMap}}
+      a nuestro evento.
+    </p-fieldset>
+  </div>
+
+  <div class="col col-12 md:col-6 sm:col-3">
+    <p-fieldset [toggleable]="true">
+      <ng-template pTemplate="header">Slice pipe</ng-template>
+      <div class="grid mb-5">
+        <input type="text" pInputText class="mr-5" [(ngModel)]="clienteModel"> 
+        <button pButton pRipple type="button" label="Agregar" class="p-button-success" (click)="add()"></button>
+      </div>
+      <ul>
+        <li *ngFor="let cliente of clientes; let i = index">{{i+1}}.-{{cliente}}</li>
+      </ul>
+      <p class="my-5"><ng-template pTemplate="header">i18Plural pipe</ng-template>
+        Actualmente {{ clientes.length | i18nPlural:clientesMap }}
+      </p>
+      <button pButton (click)="remove()" class="p-button-danger">Eliminar cliente</button>
+    </p-fieldset>
+  </div>
+
+
+  <div class="col col-12 md:col-6 sm:col-3">
+    <p-fieldset [toggleable]="true">
+      <ng-template pTemplate="header">Slice pipe</ng-template>
+      <b>Original</b>
+      <pre>{{ clientes }}</pre>
+      <b>Slice:0:1</b>
+      <pre>{{clientes | slice:0:1}}</pre>
+      <b>Slice:0:4</b>
+      <pre>{{clientes | slice:0:4}}</pre>
+    </p-fieldset>
+  </div>
+  
+  <div class="col col-12 md:col-6 sm:col-3">
+    <p-fieldset [toggleable]="true">
+      <ng-template pTemplate="header">Slice pipe</ng-template>
+      <b>Original</b>
+      <pre>{{ clientes }}</pre>
+      <b>Slice:0:1</b>
+      <pre>{{clientes | slice:0:1}}</pre>
+      <b>Slice:0:4</b>
+      <pre>{{clientes | slice:0:4}}</pre>
+    </p-fieldset>
+  </div>
+
+  <div class="col col-12 md:col-6 sm:col-3">
+    <p-fieldset [toggleable]="true">
+      <ng-template pTemplate="header">KeyValue pipe</ng-template>
+        <ul>
+          <li *ngFor="let val of persona | keyvalue">{{ val.key}} : {{val.value}}</li>
+        </ul>
+    </p-fieldset>
+  </div>
+
+  <div class="col col-12 md:col-6 sm:col-3">
+    <p-fieldset [toggleable]="true">
+      <ng-template pTemplate="header">Json pipe</ng-template>
+      <pre>{{persona | json}}</pre>
+      <pre>{{clientes | json}}</pre>
+    </p-fieldset>
+  </div>
+
+  <div class="col col-12 md:col-6 sm:col-3">
+    <p-fieldset [toggleable]="true">
+      <ng-template pTemplate="header">Async pipe | Solo un observable o promesa</ng-template>
+      <pre>{{ miObservable | async }}</pre>
+      <hr>
+      <!-- Texto condicional en base una promesa -->
+      <pre *ngIf="!(valorPromise | async)">Resolviendo promesa... Estimado 5s </pre>
+      <pre> {{ valorPromise | async }} </pre>
+    </p-fieldset>
+  </div>
+</div>

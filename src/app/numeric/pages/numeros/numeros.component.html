@@ -1,0 +1,29 @@
+<div class="text-layout">
+  <h1>Pipes Numericos</h1>
+  <p>Pipes para manejo de numeros</p>
+
+
+  <div class="grid">
+    <div class="col-6">
+      <p-card header="decimal"  subheader="ventas netas | number">
+        <i class="pi pi-dollar"></i>
+        {{ ventasNeta | number:'1.8-8' }}
+      </p-card>
+    </div>
+    <div class="col-6">
+      <p-card header="currency" subheader="ventas brutas | currency">
+        {{ (ventasNeta+14000000) | currency:'CAD':'symbol-narrow':'1.4-4' }}
+      </p-card>
+    </div>
+    <div class="col-6">
+      <p-card header="porcentaje" subheader="Ganancia % | currency">
+        {{ porcentaje | percent:'2.2-2' }}
+      </p-card>
+    </div>
+  </div>
+</div>
+
+
+
+
+
